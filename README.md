@@ -23,13 +23,11 @@ Since I own an nvidia gpu, I figured I'd create a section specific to nvidia.
 ### nvidia-settings
 Install the latest `nvidia` driver using `yay` or another [AUR](https://aur.archlinux.org/) helper. This should also install the `nvidia-settings` package, which is very important to improve the performance of our system. 
 
-Run `nvidia-settings` and select "X Server Display Configuration" and select "advanced". Press `Force Composition Pipeline` and check if thescreen tearing remains. If it doesn't work, `Force Full Composition Pipeline` should do the trick. Make sure vsync is enabled by going over to OpenGL settings and select `Sync to VBlanc` if your system supports it. After performing these steps, press Save to X Configuration File and confirm. 
+Run `nvidia-settings` and select "X Server Display Configuration" and select "advanced". Press `Force Composition Pipeline` and check if the screen tearing remains, otherwise `Force Full Composition Pipeline` should do the trick. Make sure vsync is enabled by going over to OpenGL settings and select `Sync to VBlanc` if your system supports it. After performing these steps, go back to the screen where you turned on `Full Composition Pipeline`, press Save to X Configuration File and confirm. 
 
-Next, go over to nvidia-settings Configuration and disable all active timers and press Save Current Configuration. This will improve performance. 
+Next, go over to nvidia-settings Configuration and disable all active timers and press Save Current Configuration. What it does is it created a file called `nvidia-settings.rc` in your home directory which is used to store your current configuration. Lastly, to make our system load `nvidia-settings.rc` make sure `nvidia-settings --load-config-only` gets ran on startup. This could be done in several ways, but I recommend using either your window manager's or desktop environment's config. See [Autostart](https://wiki.archlinux.org/title/Autostarting) for more.
 
 For a more in-detail guide, refer to [nvidia-settings](https://wiki.archlinux.org/title/NVIDIA#nvidia-settings). There's a few more settings that might be useful, such as `Coolbits` or `TripleBuffer` that I recommend reading about.
-
-Lastly, make sure you run `nvidia-settings --load-config-only` every time you start your system. This could be done in several ways, but I recommend using either your window manager or desktop environment. See [Autostart](https://wiki.archlinux.org/title/Autostarting) for more.
 
 ### Compositor
 A compositor is a great tool to make your desktop even better! However, despite not requiring much configuring to work (if any at all), compositors can sometimes cause performance issues. 
